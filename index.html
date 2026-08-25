@@ -171,25 +171,34 @@
         </footer>
     </div>
 
-    <!-- JavaScript for Interactive Banner Slider -->
+   <!-- JavaScript for Interactive Banner Slider -->
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
-            });
-        }
+            if (slides.length === 0) return;
 
-        function moveSlide(step) {
-            currentSlide = (currentSlide + step + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
 
-        // Auto-play slider every 4 seconds
-        setInterval(() => { moveSlide(1); }, 4000);
+            // Expose controls globally for button clicks
+            window.moveSlide = function(step) {
+                currentSlide = (currentSlide + step + slides.length) % slides.length;
+                showSlide(currentSlide);
+            };
+
+            // Auto-play slider every 4 seconds
+            setInterval(function() {
+                window.moveSlide(1);
+            }, 4000);
+        });
     </script>
 </body>
 </html>
