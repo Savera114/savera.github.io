@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savera Hanif | Computer Systems Engineer & Data Operations Specialist</title>
+    <style>
+        /* CSS Variables & Global Reset */
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .bio {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        /* Experience & Case Studies Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-main);
+        }
+
+        .card .role-meta {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* Skills Matrix */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Savera Hanif</h1>
+            <div class="subtitle">Computer Systems Engineer & Data Operations Specialist</div>
+            <p class="bio">
+                MS in Computer Science with 4+ years of professional experience optimizing data administration pipelines, 
+                building MySQL database architectures, and deploying AI-native workflows. Registered PEC Engineer based in Islamabad, Pakistan.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:your-email@example.com" class="btn btn-primary">Contact Me</a>
+                <a href="https://github.com/your-username" class="btn btn-secondary" target="_blank">GitHub Profile</a>
+                <a href="#" class="btn btn-secondary">Download CV</a>
+            </div>
+        </header>
+
+        <section>
+            <div class="section-title">Featured Impact & Projects</div>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>Enterprise Data Administration & Optimization</h3>
+                    <div class="role-meta">Office & Data Manager | NESPAK (Dorsch Impact JV)</div>
+                    <p>
+                        Architected operational data validation pipelines, managed MySQL reporting databases, and standardized MIS cross-functional workflows for large-scale infrastructure projects.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Database Admin</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Data Validation</span>
+                        <span class="tag">MIS Frameworks</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Published Research Publications</h3>
+                    <div class="role-meta">Peer-Reviewed Journals & Conference Proceedings</div>
+                    <p>
+                        Co-authored two published research papers exploring decentralized architectures, Internet of Things (IoT) systems, and blockchain integration.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Blockchain</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Technical Writing</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <br>
+                    <a href="https://doi.org/YOUR_DOI_HERE" class="card-link" target="_blank">Read Published Papers →</a>
+                </div>
+
+                <div class="card">
+                    <h3>E-Commerce Operations & Technical Infrastructure</h3>
+                    <div class="role-meta">Founder | Global Finds PK</div>
+                    <p>
+                        Engineered inventory catalog schemas, payment/trust integration, and digital storefront workflows on Shopify.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Shopify</span>
+                        <span class="tag">Catalog Data</span>
+                        <span class="tag">E-Commerce Systems</span>
+                    </div>
+                    <br>
+                    <a href="https://globalfindspk.com" class="card-link" target="_blank">Visit Global Finds PK →</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Technical Expertise</div>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Languages & DBs</h4>
+                        <ul class="skill-list">
+                            <li>SQL (MySQL)</li>
+                            <li>Python</li>
+                            <li>PHP</li>
+                            <li>HTML5 / CSS3</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Data & Operations</h4>
+                        <ul class="skill-list">
+                            <li>Database Administration</li>
+                            <li>Data Validation & MIS</li>
+                            <li>Pivot Tables & Advanced Excel</li>
+                            <li>AI-Native Systems</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Platforms & Tools</h4>
+                        <ul class="skill-list">
+                            <li>Git / GitHub</li>
+                            <li>Shopify Admin</li>
+                            <li>Google Workspace</li>
+                            <li>MS Office Suite</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Education & Credentials</div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Master of Science in Computer Science</h3>
+                    <div class="role-meta">COMSATS University | CGPA 3.89</div>
+                    <p>Focused on advanced computing, data systems design, and empirical research methods.</p>
+                </div>
+                <div class="card">
+                    <h3>Bachelor of Computer Systems Engineering</h3>
+                    <div class="role-meta">PEC Registered Engineer</div>
+                    <p>Foundational engineering principles across hardware systems, networks, and software architecture.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Savera Hanif • Islamabad, Pakistan • Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
