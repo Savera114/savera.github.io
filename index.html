@@ -20,7 +20,7 @@
         body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; padding: 2rem 1rem; }
         .container { max-width: 950px; margin: 0 auto; }
 
-        /* Hero / Profile Section */
+        /* Header / Profile Section */
         header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
         @media (min-width: 768px) { header { flex-direction: row; text-align: left; } }
         
@@ -45,11 +45,12 @@
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.2rem; }
 
         /* Interactive Image Slider */
-        .slider-container { position: relative; width: 100%; height: 320px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; align-items: center; justify-content: center; background: #000; }
-        .slide.active { opacity: 1; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15, 23, 42, 0.7); color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem; border-radius: 4px; z-index: 10; }
+        .slider-container { position: relative; width: 100%; height: auto; min-height: 250px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); }
+        .slide { display: none; width: 100%; }
+        .slide.active { display: block; }
+        .slide img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15, 23, 42, 0.8); color: white; border: 1px solid var(--border); padding: 0.6rem 1rem; cursor: pointer; font-size: 1.2rem; border-radius: 4px; z-index: 10; }
         .slider-btn:hover { background: var(--accent); color: #000; }
         .prev { left: 10px; }
         .next { right: 10px; }
@@ -57,7 +58,7 @@
         /* Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
         .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--card-bg); }
-        .gallery-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; }
         .gallery-caption { padding: 0.8rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
 
         /* Tags & Links */
@@ -85,7 +86,7 @@
                 </div>
                 <div class="cta-buttons">
                     <a href="Savera_Hanif_CV.pdf" class="btn btn-primary" download>📄 Download CV</a>
-                    <a href="https://www.linkedin.com/in/savera-hanif-6329223b2/" class="btn btn-secondary" target="_blank"></a>
+                    <a href="https://linkedin.com/in/savera-hanif" class="btn btn-secondary" target="_blank">LinkedIn</a>
                     <a href="https://github.com/Savera114" class="btn btn-secondary" target="_blank">GitHub Profile</a>
                 </div>
             </div>
@@ -150,17 +151,17 @@
         <section>
             <div class="section-title">Professional Experience</div>
             <div class="card">
-                <h3>Office Manager and Data Manager[cite: 1]</h3>
+                <h3>Office Manager and Data Manager</h3>
                 <p style="color: var(--accent); font-size: 0.85rem;">Dorsch Impact GmbH | 2021 – 2025</p>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Managed cross-functional team coordination, executive calendar scheduling, confidential data entry, and MySQL reporting databases under international consulting frameworks[cite: 1].
+                    Managed cross-functional team coordination, executive calendar scheduling, confidential data entry, and MySQL reporting databases under international consulting frameworks.
                 </p>
             </div>
             <div class="card">
-                <h3>Assistant IT Officer[cite: 1]</h3>
+                <h3>Assistant IT Officer</h3>
                 <p style="color: var(--accent); font-size: 0.85rem;">Humza Development Foundation | 2019 – 2020</p>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Administered corporate data systems, performed record verification, and resolved administrative workflow bottlenecks using Excel and database tools[cite: 1].
+                    Administered corporate data systems, performed record verification, and resolved administrative workflow bottlenecks using Excel and database tools.
                 </p>
             </div>
         </section>
@@ -171,34 +172,23 @@
         </footer>
     </div>
 
-   <!-- JavaScript for Interactive Banner Slider -->
+    <!-- JavaScript for Interactive Banner Slider -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let currentSlide = 0;
+        let currentSlide = 0;
+        
+        function moveSlide(step) {
             const slides = document.querySelectorAll('.slide');
-
             if (slides.length === 0) return;
+            
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + step + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
 
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    if (i === index) {
-                        slide.classList.add('active');
-                    }
-                });
-            }
-
-            // Expose controls globally for button clicks
-            window.moveSlide = function(step) {
-                currentSlide = (currentSlide + step + slides.length) % slides.length;
-                showSlide(currentSlide);
-            };
-
-            // Auto-play slider every 4 seconds
-            setInterval(function() {
-                window.moveSlide(1);
-            }, 4000);
-        });
+        // Auto-play slider every 4 seconds
+        setInterval(function() {
+            moveSlide(1);
+        }, 4000);
     </script>
 </body>
 </html>
